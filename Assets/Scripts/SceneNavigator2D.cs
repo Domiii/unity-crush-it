@@ -5,7 +5,6 @@
 using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(Camera))]
 public class SceneNavigator2D : MonoBehaviour {
     public Camera Camera;
 
@@ -105,7 +104,7 @@ public class SceneNavigator2D : MonoBehaviour {
 
             // clamp vertically
             if (camMin.y < containerMin.y) {
-                dy = camMin.y - containerMin.y;
+                dy = containerMin.y - camMin.y;
             }
             if (camMax.y > containerMax.y) {
                 dy = containerMax.y - camMax.y;
