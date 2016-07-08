@@ -1,5 +1,5 @@
 ﻿/**
- * Can be moved with standard input. Always clamped to given container.
+ * 2D camera panning and scrolling. Always clamped to given container.
  */
 
 using UnityEngine;
