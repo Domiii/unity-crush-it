@@ -14,7 +14,9 @@ public class Crushable : MonoBehaviour {
 	void Update () {
 	    if (!crushed) {
             // check if crushable has been "turned"
+            //print(Vector3.Dot(transform.up, Vector3.up));
             if (Vector3.Dot(transform.up, Vector3.up) <= MinDot) {
+                print("CRUSHED!");
                 SetCrushed();
             }
         }
