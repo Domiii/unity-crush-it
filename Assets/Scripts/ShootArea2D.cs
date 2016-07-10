@@ -24,12 +24,13 @@ public class ShootArea2D : MonoBehaviour {
 
     void OnMouseDown() {
         var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        var projectile = (GameObject)Instantiate(ProjectilePrefab, pos, Quaternion.identity);
-        var body = projectile.GetComponent<Rigidbody2D>();
+        pos.z = 0;
+        var body = (Rigidbody2D)Instantiate(ProjectilePrefab, pos, Quaternion.identity);
+        //var body = projectile.GetComponent<Rigidbody2D>();
 
         
         var direction = Quaternion.Euler(0, 0, -Angle) * Vector3.up;
         body.AddForce(Force * direction * body.mass);
-        body.AddTorque(-Random.Range(1f, 400) * body.mass);
+        body.AddTorque(-Random.Range(1f, 100) * body.mass);
     }
 }
