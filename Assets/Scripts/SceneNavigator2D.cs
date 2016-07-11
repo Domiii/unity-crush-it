@@ -70,7 +70,7 @@ public class SceneNavigator2D : MonoBehaviour {
     }
 
     void Zoom() {
-        var newSize = Camera.orthographicSize + Input.GetAxis("Mouse ScrollWheel") * ZoomSpeed;
+        var newSize = Camera.orthographicSize - Input.GetAxis("Mouse ScrollWheel") * ZoomSpeed;
         newSize = Mathf.Clamp(newSize, MinSize/2, MaxSize/2);
         Camera.orthographicSize = newSize;
     }

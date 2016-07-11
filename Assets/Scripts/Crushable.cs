@@ -2,21 +2,25 @@
 using System.Collections;
 
 public class Crushable : MonoBehaviour {
-    private static float MinDot = Mathf.Cos(45);      // consider "crushed" at this angle
+    public GameObject OnCrushEnable;
+
+    /// <summary>
+    /// Crushables need to surpass this angle to be considered "crushed"
+    /// </summary>
+    private static readonly float MinAngle = 60;
+    private static readonly float MinDot = Mathf.Cos(Mathf.Deg2Rad * MinAngle);
     private bool crushed = false;
 
 	// Use this for initialization
 	void Start () {
-	
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
 	    if (!crushed) {
             // check if crushable has been "turned"
-            //print(Vector3.Dot(transform.up, Vector3.up));
             if (Vector3.Dot(transform.up, Vector3.up) <= MinDot) {
-                print("CRUSHED!");
+                //print("CRUSHED!");
                 SetCrushed();
             }
         }
@@ -29,6 +33,8 @@ public class Crushable : MonoBehaviour {
         if (crushed) return;
 
         crushed = true;
-        
+        if (OnCrushEnable != null) {
+            OnCrushEnable.SetActive(true);
+        }
     }
 }
